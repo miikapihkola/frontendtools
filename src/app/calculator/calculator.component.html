@@ -1,0 +1,13 @@
+<h1>Calculator</h1><br>
+<mat-card appearance="outlined" class="VisualBody">
+    <mat-card-content>
+        <mat-card appearance="outlined" class="ResultBox">
+            <mat-card-content>{{result}}</mat-card-content>
+        </mat-card>
+        <mat-grid-list cols="4" rowHeight="100px">
+            <mat-grid-tile *ngFor="let button of buttons">
+                <button mat-raised-button (click)="addValue(button)">{{button}}</button>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-card-content>
+</mat-card>
