@@ -1,0 +1,19 @@
+<h1>Feedback Form</h1><br>
+<mat-card appearance="outlined" class="VisualBody">
+    <mat-card-content>
+        <div *ngFor="let question of questionsArray">
+            <h3>{{question.question}}</h3>
+            <div class="row">
+                <div class="column1">
+                    <mat-slider max="3" (input)="onInputChange($event, question.question)">
+                        <input matSliderThumb>
+                    </mat-slider>
+                </div>
+                <div class="column2">
+                    <p>{{question.valueAsText}}</p>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+        </div>
+    </mat-card-content>
+</mat-card>
