@@ -1,0 +1,50 @@
+<h1>Template Driven Form</h1><br>
+<mat-card appearance="outlined">
+    <mat-card-content>
+        <div class="inputslot">
+            <mat-form-field hintLabel="Min length 2">
+                <mat-label>First name</mat-label>
+                <input matInput #input minlength="2" placeholder="Ex. Miika" />
+                <mat-hint align="end">Only characters</mat-hint>
+            </mat-form-field>
+        </div><br>
+        <div class="inputslot">
+            <mat-form-field hintLabel="Min length 2">
+                <mat-label>Last name</mat-label>
+                <input matInput #input minlength="2" placeholder="Ex. Pihkola" />
+                <mat-hint align="end">Only characters</mat-hint>
+            </mat-form-field>
+        </div><br>
+        <div class="inputslot">
+            <mat-form-field>
+                <mat-label>Person ID</mat-label>
+                <input matInput #input placeholder="PPKKVVSNNNT" />
+            </mat-form-field>
+        </div><br>
+        <div class="inputslot">
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput #input placeholder="Ex. miika.pihkola@gmail.com" />
+            </mat-form-field>
+        </div><br>
+        <div class="inputslot">
+            <mat-form-field hintLabel="Min length 6">
+                <mat-label>Username</mat-label>
+                <input matInput #input minlength="6" placeholder="Ex. Miika" />
+            </mat-form-field>
+        </div><br>
+        <div class="inputslot">
+            <mat-form-field hintLabel="Min length 10">
+                <mat-label>Password</mat-label>
+                <input matInput #input minlength="6" placeholder="Ex. abc123" />
+                <mat-hint align="end">Must contain numbers and characters</mat-hint>
+            </mat-form-field>
+        </div><br>
+        <div class="inputslot">
+            <mat-form-field>
+                <mat-label> Confirm Password</mat-label>
+                <input matInput #input minlength="6" placeholder="Ex. abc123" />
+            </mat-form-field>
+        </div><br>
+    </mat-card-content>
+</mat-card>
