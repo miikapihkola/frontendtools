@@ -1,0 +1,9 @@
+<mat-toolbar>
+    <button mat-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/hello" routerLinkActive="active">Hello World</button>
+        <button mat-menu-item routerLink="/calculator" routerLinkActive="active">Calculator</button>
+        <button mat-menu-item routerLink="/feedback" routerLinkActive="active">Feedback Form</button>
+    </mat-menu>
+    <span>Front end kurssi</span>
+</mat-toolbar>

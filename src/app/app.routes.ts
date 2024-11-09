@@ -9,6 +9,6 @@ export const routes: Routes = [
     { path: 'feedback', component: FeedbackComponent },
     { path: 'calculator', component: CalculatorComponent },
     { path: 'hello', component: HelloWorldComponent },
-    { path: '', redirectTo: 'feedback', pathMatch: 'full' },
+    { path: '', redirectTo: 'hello', pathMatch: 'full' },
     { path: '**', component: PageNotFoundComponent },
 ];
