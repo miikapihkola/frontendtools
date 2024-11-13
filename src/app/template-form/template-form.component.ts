@@ -6,6 +6,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { Person } from '../models/person';
+
 
 @Component({
   selector: 'app-template-form',
@@ -15,5 +17,12 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
   styleUrl: './template-form.component.css'
 })
 export class TemplateFormComponent {
+  person: Person = new Person;
+  checked: boolean = false;
+  confirmpass: string = "";
 
+  onSubmit(e: any) {
+    console.log(e.value.firstname);
+    console.log(e.controls['firstname'].status);
+  }
 }

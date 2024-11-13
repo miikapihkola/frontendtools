@@ -1,54 +1,87 @@
 <h1>Template Driven Form</h1><br>
 <mat-card appearance="outlined">
     <mat-card-content>
-        <div class="inputslot">
-            <mat-form-field hintLabel="Min length 2">
-                <mat-label>First name</mat-label>
-                <input matInput #input minlength="2" placeholder="Ex. Miika" />
-                <mat-hint align="end">Only characters</mat-hint>
-            </mat-form-field>
-        </div><br>
-        <div class="inputslot">
-            <mat-form-field hintLabel="Min length 2">
-                <mat-label>Last name</mat-label>
-                <input matInput #input minlength="2" placeholder="Ex. Pihkola" />
-                <mat-hint align="end">Only characters</mat-hint>
-            </mat-form-field>
-        </div><br>
-        <div class="inputslot">
-            <mat-form-field>
-                <mat-label>Person ID</mat-label>
-                <input matInput #input placeholder="PPKKVVSNNNT" />
-            </mat-form-field>
-        </div><br>
-        <div class="inputslot">
-            <mat-form-field>
-                <mat-label>Email</mat-label>
-                <input matInput #input placeholder="Ex. miika.pihkola@gmail.com" />
-            </mat-form-field>
-        </div><br>
-        <div class="inputslot">
-            <mat-form-field hintLabel="Min length 6">
-                <mat-label>Username</mat-label>
-                <input matInput #input minlength="6" placeholder="Ex. Miika" />
-            </mat-form-field>
-        </div><br>
-        <div class="inputslot">
-            <mat-form-field hintLabel="Min length 10">
-                <mat-label>Password</mat-label>
-                <input matInput #input minlength="6" placeholder="Ex. abc123" />
-                <mat-hint align="end">Must contain numbers and characters</mat-hint>
-            </mat-form-field>
-        </div><br>
-        <div class="inputslot">
-            <mat-form-field>
-                <mat-label> Confirm Password</mat-label>
-                <input matInput #input minlength="6" placeholder="Ex. abc123" />
-            </mat-form-field>
-        </div><br>
-        <div class="inputslot">
-            <mat-checkbox class="example-margin">Accept terms and conditions</mat-checkbox>
-        </div><br>
-        <button mat-raised-button>Submit</button>
+        <form (ngSubmit)="onSubmit(form1)" #form1="ngForm">
+            <div class="inputslot">
+                <mat-form-field hintLabel="Min length 2">
+                    <mat-label>First name</mat-label>
+                    <input matInput minlength="2" placeholder="Ex. Miika" name="firstname" #fname="ngModel"
+                        [(ngModel)]="person.firstname" ngModel pattern="^[a-öA-Ö]*$" required />
+                    <mat-error *ngIf="fname.hasError('required')">Enter your first name</mat-error>
+                    <mat-error *ngIf="fname.hasError('minlength')">Minumum 2 characters required</mat-error>
+                    <mat-error *ngIf="fname.hasError('pattern')">Must be valid name</mat-error>
+                    <mat-hint align="end">Only characters</mat-hint>
+                </mat-form-field>
+            </div><br>
+            <div class="inputslot">
+                <mat-form-field hintLabel="Min length 2">
+                    <mat-label>Last name</mat-label>
+                    <input matInput minlength="2" placeholder="Ex. Pihkola" name="lastname" #lname="ngModel"
+                        [(ngModel)]="person.lastname" ngModel pattern="^[a-zA-Z]*$" required />
+                    <mat-error *ngIf="lname.hasError('required')">Enter your last name</mat-error>
+                    <mat-error *ngIf="lname.hasError('minlength')">Minumum 2 characters required</mat-error>
+                    <mat-error *ngIf="lname.hasError('pattern')">Must be valid name</mat-error>
+                    <mat-hint align="end">Only characters</mat-hint>
+                </mat-form-field>
+            </div><br>
+            <div class="inputslot">
+                <mat-form-field>
+                    <mat-label>Person ID</mat-label>
+                    <input matInput placeholder="PPKKVVSNNNT" #pID="ngModel" name="personid"
+                        [(ngModel)]="person.personid" ngModel
+                        pattern="^(0[1-9]|[12]\d|3[01])(0[1-9]|1[0-2])([5-9]\d\+|\d\d[-U-Y]|[0-2]\d[A-F])\d{3}[\dA-Z]$"
+                        required />
+                    <mat-error *ngIf="pID.hasError('required')">Enter your person id</mat-error>
+                    <mat-error *ngIf="pID.hasError('pattern')">Must be valid person id</mat-error>
+                </mat-form-field>
+            </div><br>
+            <div class="inputslot">
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Ex. fname.lname@gmail.com" #email="ngModel" name="email"
+                        [(ngModel)]="person.email" ngModel pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required
+                        type="email" />
+                    <mat-error *ngIf="email.hasError('required')">Enter your email</mat-error>
+                    <mat-error *ngIf="email.hasError('pattern')">Must be valid email</mat-error>
+                </mat-form-field>
+            </div><br>
+            <div class="inputslot">
+                <mat-form-field hintLabel="Min length 6">
+                    <mat-label>Username</mat-label>
+                    <input matInput minlength="6" placeholder="Ex. MiikaP" #uname="ngModel" name="username"
+                        [(ngModel)]="person.username" required />
+                    <mat-error *ngIf="uname.hasError('required')">Enter desired username</mat-error>
+                    <mat-error *ngIf="uname.hasError('minlength')">Minumum 6 characters required</mat-error>
+                </mat-form-field>
+            </div><br>
+            <div class="inputslot">
+                <mat-form-field hintLabel="Min length 10">
+                    <mat-label>Password</mat-label>
+                    <input matInput minlength="10" placeholder="Ex. ABCdef123X" #pword1="ngModel" name="password1"
+                        [(ngModel)]="person.password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{10,}$" required
+                        type="password" />
+                    <mat-error *ngIf="pword1.hasError('required')">Enter desired password</mat-error>
+                    <mat-error *ngIf="pword1.hasError('minlength')">Minumum 10 characters required</mat-error>
+                    <mat-error *ngIf="pword1.hasError('pattern')">Must contain atleast 1 Upper and Lower case character
+                        and 1 number</mat-error>
+                    <mat-hint align="end">Must contain atleast 1 Upper and Lower case character and 1 number</mat-hint>
+                </mat-form-field>
+            </div><br>
+            <div class="inputslot">
+                <mat-form-field>
+                    <mat-label>Confirm Password</mat-label>
+                    <input matInput minlength="10" placeholder="Ex. ABCdef123X" #pword2="ngModel" name="password2"
+                        [(ngModel)]="confirmpass" pattern="{{pword1.value}}" required type="password" />
+                    <mat-error *ngIf="pword2.hasError('required')">Confirm password</mat-error>
+                    <mat-error *ngIf="pword2.hasError('pattern')">Password does not match</mat-error>
+                </mat-form-field>
+            </div><br>
+            <div class="inputslot">
+                <mat-checkbox #tac="ngModel" required [(ngModel)]="checked" name="accept">Accept terms and
+                    conditions</mat-checkbox>
+                <mat-error *ngIf="tac.hasError('required') && tac.dirty">Accept terms and conditions</mat-error>
+            </div><br>
+            <button mat-raised-button type="submit" [disabled]="form1.invalid">Submit</button>
+        </form>
     </mat-card-content>
 </mat-card><br>
