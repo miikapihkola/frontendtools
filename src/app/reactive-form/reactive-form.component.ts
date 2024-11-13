@@ -8,12 +8,12 @@ import { FormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @Component({
-  selector: 'app-template-form',
+  selector: 'app-reactive-form',
   standalone: true,
   imports: [CommonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatButtonModule, FormsModule, MatCheckboxModule],
-  templateUrl: './template-form.component.html',
-  styleUrl: './template-form.component.css'
+  templateUrl: './reactive-form.component.html',
+  styleUrl: './reactive-form.component.css'
 })
-export class TemplateFormComponent {
+export class ReactiveFormComponent {
 
 }

@@ -4,9 +4,11 @@ import { HelloWorldComponent } from './hello-world/hello-world.component';
 import { CalculatorComponent } from './calculator/calculator.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { TemplateFormComponent } from './template-form/template-form.component';
+import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 
 export const routes: Routes = [
 
+    { path: 'reactiveform', component: ReactiveFormComponent },
     { path: 'templateform', component: TemplateFormComponent },
     { path: 'feedback', component: FeedbackComponent },
     { path: 'calculator', component: CalculatorComponent },
