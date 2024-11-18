@@ -22,6 +22,7 @@ export class TemplateFormComponent {
   confirmpass: string = "";
 
   onSubmit(e: any) {
+    console.log(e.value)
     console.log(e.value.firstname);
     console.log(e.controls['firstname'].status);
   }
