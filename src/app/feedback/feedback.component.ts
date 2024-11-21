@@ -5,6 +5,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatDividerModule } from '@angular/material/divider';
 import { Question } from '../models/question';
 import questions from '../models/questions.json'
+import { FeedbackService } from '../services/feedback.service';
 
 @Component({
   selector: 'app-feedback',
@@ -15,7 +16,13 @@ import questions from '../models/questions.json'
 })
 export class FeedbackComponent {
 
-  questionsArray: Array<Question> = new Array;
+  questionsArray: any;
+
+  constructor(private feedbackService: FeedbackService) {
+    this.questionsArray = this.feedbackService.getQuestions();
+  }
+
+  /*questionsArray: Array<Question> = new Array;
 
   ngOnInit() {
     this.createQuestions();
@@ -25,7 +32,7 @@ export class FeedbackComponent {
     for (var i = 0; i < questions.length; i++) {
       this.questionsArray.push(new Question(questions[i].question))
     }
-  }
+  }*/
 
   onInputChange(event: any, q: string) {
     for (var i = 0; i < this.questionsArray.length; i++) {
