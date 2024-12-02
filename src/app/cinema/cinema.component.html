@@ -1,6 +1,11 @@
 <h1>Cinema</h1><br>
+<form>
+    <mat-form-field>
+        <input matInput placeholder="Kirjoita hakusana" [(ngModel)]="searchTerm" name="searchTerm">
+    </mat-form-field>
+</form>
 <mat-accordion>
-    <mat-expansion-panel *ngFor="let item of data$ | async ">
+    <mat-expansion-panel *ngFor="let item of data$ | async | appFilter: searchTerm">
         <mat-expansion-panel-header>
             <mat-panel-title> {{item.PublishDate | date:'short'}} </mat-panel-title>
             <mat-panel-description>{{item.Title}}</mat-panel-description>
