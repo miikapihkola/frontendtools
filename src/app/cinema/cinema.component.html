@@ -1,4 +1,10 @@
 <h1>Cinema</h1><br>
 <mat-accordion>
-    <mat-expansion-panel *ngFor="let item of data$ | async"></mat-expansion-panel>
+    <mat-expansion-panel *ngFor="let item of data$ | async ">
+        <mat-expansion-panel-header>
+            <mat-panel-title> {{item.PublishDate | date:'short'}} </mat-panel-title>
+            <mat-panel-description>{{item.Title}}</mat-panel-description>
+        </mat-expansion-panel-header>
+        <p><img src={{item.ImageURL}} alt="image" width="100%"></p>
+    </mat-expansion-panel>
 </mat-accordion>
