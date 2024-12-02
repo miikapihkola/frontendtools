@@ -5,9 +5,11 @@ import { CalculatorComponent } from './calculator/calculator.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
+import { CinemaComponent } from './cinema/cinema.component';
 
 export const routes: Routes = [
 
+    { path: 'cinema', component: CinemaComponent },
     { path: 'reactiveform', component: ReactiveFormComponent },
     { path: 'templateform', component: TemplateFormComponent },
     { path: 'feedback', component: FeedbackComponent },
