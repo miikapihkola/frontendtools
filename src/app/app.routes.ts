@@ -6,9 +6,14 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { CinemaComponent } from './cinema/cinema.component';
+import { LoginComponent } from './login/login.component';
+import { AdminviewComponent } from './adminview/adminview.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
 
+    { path: 'admin', component: AdminviewComponent, canActivate: [authGuard] },
+    { path: 'login', component: LoginComponent },
     { path: 'cinema', component: CinemaComponent },
     { path: 'reactiveform', component: ReactiveFormComponent },
     { path: 'templateform', component: TemplateFormComponent },

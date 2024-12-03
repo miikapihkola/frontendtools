@@ -1,0 +1,25 @@
+<h3>Authentication to admin view</h3>
+<mat-card appearance="outlined">
+    <mat-card-content>
+        <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+            <div class="inputslot">
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Email Address" #email="ngModel" name="email" [(ngModel)]="person.email"
+                        required />
+                    <mat-error *ngIf="email.hasError('required')">Enter your email</mat-error>
+                </mat-form-field>
+            </div><br>
+            <div class="inputslot">
+                <mat-form-field>
+                    <mat-label>Password</mat-label>
+                    <input matInput placeholder="Password" #pword1="ngModel" name="password"
+                        [(ngModel)]="person.password" required type="password" />
+                    <mat-error *ngIf="pword1.hasError('required')">Enter your password</mat-error>
+                </mat-form-field>
+            </div><br>
+            <button mat-raised-button type="submit" [disabled]="loginForm.invalid">Login</button>
+            <button mat-raised-button (click)="onCancel()">Cancel</button>
+        </form>
+    </mat-card-content>
+</mat-card><br>
