@@ -1,6 +1,8 @@
 <mat-toolbar>
     <button mat-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon></button>
     <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/admin" routerLinkActive="active" *ngIf="(userEmail$ | async)">Admin
+            View</button>
         <button mat-menu-item routerLink="/hello" routerLinkActive="active">Hello World</button>
         <button mat-menu-item routerLink="/calculator" routerLinkActive="active">Calculator</button>
         <button mat-menu-item routerLink="/feedback" routerLinkActive="active">Feedback Form</button>
@@ -10,7 +12,10 @@
     </mat-menu>
     <span style="width: 100%;">Front end kurssi</span>
     <span style="padding-right: 5px;"></span>
-    <a routerLink="/login" routerLinkActive="active">
+    <a routerLink="/login" routerLinkActive="active" *ngIf="!(userEmail$ | async)">
         <button mat-raised-button>Admin Login</button>
     </a>
+    <div *ngIf="(userEmail$ | async)">
+        {{userEmail$ | async}}&ensp;<button mat-raised-button (click)="logOut()">Log Out</button>
+    </div>
 </mat-toolbar>
