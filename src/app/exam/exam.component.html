@@ -69,7 +69,8 @@
                     <mat-error *ngIf="email.hasError('pattern')">Must be valid email</mat-error>
                 </mat-form-field>
             </div><br>
-            <button mat-raised-button type="submit" [disabled]="formOrder.invalid">Osta Liput</button><br><br>
+            <button mat-raised-button type="submit" [disabled]="formOrder.invalid || orderTotal == 0">Osta
+                Liput</button><br><br>
         </form>
     </div>
 
