@@ -25,7 +25,7 @@
     <mat-grid-list cols="2" rowHeight="50px">
         <mat-grid-tile><mat-checkbox (change)="mtkToggle()" name="mtkBox"></mat-checkbox>MTK:n Jäsen</mat-grid-tile>
         <mat-grid-tile>Order Total: &nbsp;<mat-card appearance="outlined">
-                <div class="totalBox">{{orderTotal}} €</div>
+                <div class="totalBox">{{orderTotal.toFixed(2)}} €</div>
 
             </mat-card></mat-grid-tile>
 

@@ -58,8 +58,8 @@ export class ExamComponent {
     if (this.mtk) {
       this.orderTotal = this.orderTotal * this.lippuPrice[3]
     }
-    // Jos aikaa etsi miten pyöristetään 2 decimaalin tarkkuuteen
-    // esim 6 2 3 true saa infine decit
+
+    this.orderTotal = (Math.round(this.orderTotal * 100)) / 100
   }
 
   // Submit
