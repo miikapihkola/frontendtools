@@ -21,10 +21,13 @@ cinema = HT8 & HT9
 admin = HT10
 exam = Exam
 
+about exam:
+Date: 10.12.2024
+Timelimit: 4h
 exam contains:
-app/exam
-app/models/exam-order.ts
-app/services/exam-sv.service.ts
+    app/exam
+    app/models/exam-order.ts
+    app/services/exam-sv.service.ts
 
 
 -----------------------
