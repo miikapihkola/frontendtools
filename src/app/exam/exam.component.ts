@@ -26,7 +26,6 @@ export class ExamComponent {
   lippuCount: number[] = [0, 0, 0]
   lippuPrice: number[] = [15, 10, 8, 0.85]
   orderTotal: number = 0;
-
   mtk: boolean = false;
 
   constructor(private examSv: ExamSvService) {
@@ -36,12 +35,14 @@ export class ExamComponent {
   lessLippu(x: number) {
     if (this.lippuCount[x] > 0) {
       this.lippuCount[x]--;
+
       this.updatePrice();
     }
   }
 
   moreLippu(x: number) {
     this.lippuCount[x]++;
+
     this.updatePrice();
   }
 
@@ -53,8 +54,12 @@ export class ExamComponent {
   }
 
   updatePrice() {
-    // Jos aikaa etsi miten toimii ts for loop
-    this.orderTotal = this.lippuCount[0] * this.lippuPrice[0] + this.lippuCount[1] * this.lippuPrice[1] + this.lippuCount[2] * this.lippuPrice[2]
+
+    this.orderTotal = 0;
+    this.lippuCount.forEach((value, index) => {
+      this.orderTotal += value * this.lippuPrice[index]
+    })
+
     if (this.mtk) {
       this.orderTotal = this.orderTotal * this.lippuPrice[3]
     }
