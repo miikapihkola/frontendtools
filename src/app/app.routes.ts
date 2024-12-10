@@ -9,9 +9,11 @@ import { CinemaComponent } from './cinema/cinema.component';
 import { LoginComponent } from './login/login.component';
 import { AdminviewComponent } from './adminview/adminview.component';
 import { authGuard } from './guards/auth.guard';
+import { ExamComponent } from './exam/exam.component';
 
 export const routes: Routes = [
 
+    { path: 'exam', component: ExamComponent },
     { path: 'admin', component: AdminviewComponent, canActivate: [authGuard] },
     { path: 'login', component: LoginComponent },
     { path: 'cinema', component: CinemaComponent },

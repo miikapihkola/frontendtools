@@ -19,6 +19,13 @@ template-form = HT5
 reactive-form = HT6
 cinema = HT8 & HT9
 admin = HT10
+exam = Exam
+
+exam contains:
+app/exam
+app/models/exam-order.ts
+app/services/exam-sv.service.ts
+
 
 -----------------------
 How to run:

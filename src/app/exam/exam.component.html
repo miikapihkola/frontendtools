@@ -1,0 +1,76 @@
+<br>
+<h3>EXAM 10.12.2024 - Timelimit 4h</h3>
+<mat-card appearance="outlined">
+    <br>
+    <h5>Maatalousnäyttelyn 2025 liput nyt myynnissä</h5><br>
+
+    <!-- Muuta *ngFor jos jää aikaa-->
+    <mat-grid-list cols="4" rowHeight="50px">
+        <mat-grid-tile>{{lippuText[0]}}</mat-grid-tile>
+        <mat-grid-tile><button mat-stroked-button (click)="lessLippu(0)">-</button></mat-grid-tile>
+        <mat-grid-tile>{{lippuCount[0]}}</mat-grid-tile>
+        <mat-grid-tile><button mat-stroked-button (click)="moreLippu(0)">+</button></mat-grid-tile>
+
+        <mat-grid-tile>{{lippuText[1]}}</mat-grid-tile>
+        <mat-grid-tile><button mat-stroked-button (click)="lessLippu(1)">-</button></mat-grid-tile>
+        <mat-grid-tile>{{lippuCount[1]}}</mat-grid-tile>
+        <mat-grid-tile><button mat-stroked-button (click)="moreLippu(1)">+</button></mat-grid-tile>
+
+        <mat-grid-tile>{{lippuText[2]}}</mat-grid-tile>
+        <mat-grid-tile><button mat-stroked-button (click)="lessLippu(2)">-</button></mat-grid-tile>
+        <mat-grid-tile>{{lippuCount[2]}}</mat-grid-tile>
+        <mat-grid-tile><button mat-stroked-button (click)="moreLippu(2)">+</button></mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="2" rowHeight="50px">
+        <mat-grid-tile><mat-checkbox (change)="mtkToggle()" name="mtkBox"></mat-checkbox>MTK:n Jäsen</mat-grid-tile>
+        <mat-grid-tile>Order Total: &nbsp;<mat-card appearance="outlined">
+                <div class="totalBox">{{orderTotal}} €</div>
+
+            </mat-card></mat-grid-tile>
+
+
+    </mat-grid-list>
+
+    <mat-divider></mat-divider><br>
+    <div class="contactInfoBox">
+        <p class="contactLabels">Täytä tilaajan tiedot</p>
+        <form (ngSubmit)="onSubmit(formOrder)" #formOrder="ngForm">
+            <div class="inputslot">
+                <mat-form-field hintLabel="Min length 2">
+                    <mat-label>First name</mat-label>
+                    <input matInput minlength="2" placeholder="Ex. Miika" name="firstname" #fname="ngModel"
+                        [(ngModel)]="order.tilaajanEtuNimi" ngModel pattern="^[a-öA-Ö]*$" required />
+                    <mat-error *ngIf="fname.hasError('required')">Enter your first name</mat-error>
+                    <mat-error *ngIf="fname.hasError('minlength')">Minumum 2 characters required</mat-error>
+                    <mat-error *ngIf="fname.hasError('pattern')">Must be valid name</mat-error>
+                    <mat-hint align="end">Only characters</mat-hint>
+                </mat-form-field>
+            </div><br>
+            <div class="inputslot">
+                <mat-form-field hintLabel="Min length 2">
+                    <mat-label>Last name</mat-label>
+                    <input matInput minlength="2" placeholder="Ex. Pihkola" name="lastname" #lname="ngModel"
+                        [(ngModel)]="order.tilaajanSukunimi" ngModel pattern="^[a-zA-Z]*$" required />
+                    <mat-error *ngIf="lname.hasError('required')">Enter your last name</mat-error>
+                    <mat-error *ngIf="lname.hasError('minlength')">Minumum 2 characters required</mat-error>
+                    <mat-error *ngIf="lname.hasError('pattern')">Must be valid name</mat-error>
+                    <mat-hint align="end">Only characters</mat-hint>
+                </mat-form-field>
+            </div><br>
+            <p class="contactLabels">Liput lähetetään sähköpostiosoitteeseen</p>
+            <div class="inputslot">
+                <mat-form-field>
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Ex. fname.lname@gmail.com" #email="ngModel" name="email"
+                        [(ngModel)]="order.tilaajanEmail" ngModel pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required
+                        type="email" />
+                    <mat-error *ngIf="email.hasError('required')">Enter your email</mat-error>
+                    <mat-error *ngIf="email.hasError('pattern')">Must be valid email</mat-error>
+                </mat-form-field>
+            </div><br>
+            <button mat-raised-button type="submit" [disabled]="formOrder.invalid">Osta Liput</button><br><br>
+        </form>
+    </div>
+
+</mat-card>
