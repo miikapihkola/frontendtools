@@ -4,22 +4,13 @@
     <br>
     <h5>Maatalousnäyttelyn 2025 liput nyt myynnissä</h5><br>
 
-    <!-- Muuta *ngFor jos jää aikaa-->
     <mat-grid-list cols="4" rowHeight="50px">
-        <mat-grid-tile>{{lippuText[0]}}</mat-grid-tile>
-        <mat-grid-tile><button mat-stroked-button (click)="lessLippu(0)">-</button></mat-grid-tile>
-        <mat-grid-tile>{{lippuCount[0]}}</mat-grid-tile>
-        <mat-grid-tile><button mat-stroked-button (click)="moreLippu(0)">+</button></mat-grid-tile>
-
-        <mat-grid-tile>{{lippuText[1]}}</mat-grid-tile>
-        <mat-grid-tile><button mat-stroked-button (click)="lessLippu(1)">-</button></mat-grid-tile>
-        <mat-grid-tile>{{lippuCount[1]}}</mat-grid-tile>
-        <mat-grid-tile><button mat-stroked-button (click)="moreLippu(1)">+</button></mat-grid-tile>
-
-        <mat-grid-tile>{{lippuText[2]}}</mat-grid-tile>
-        <mat-grid-tile><button mat-stroked-button (click)="lessLippu(2)">-</button></mat-grid-tile>
-        <mat-grid-tile>{{lippuCount[2]}}</mat-grid-tile>
-        <mat-grid-tile><button mat-stroked-button (click)="moreLippu(2)">+</button></mat-grid-tile>
+        <div *ngFor=" let lippuType of lippuText; index as i">
+            <mat-grid-tile>{{lippuText[i]}}</mat-grid-tile>
+            <mat-grid-tile><button mat-stroked-button (click)="lessLippu(i)">-</button></mat-grid-tile>
+            <mat-grid-tile>{{lippuCount[i]}}</mat-grid-tile>
+            <mat-grid-tile><button mat-stroked-button (click)="moreLippu(i)">+</button></mat-grid-tile>
+        </div>
     </mat-grid-list>
 
     <mat-grid-list cols="2" rowHeight="50px">
